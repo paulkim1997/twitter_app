@@ -1,0 +1,24 @@
+Quasar 프레임워크란?
+multiple platform 에서 가능 한 것
+
+quasar.conf.js = configuration 파일 아이콘 라이브러리, vue router history mode, animations, plugins설치, ssr pwa electron 등등
+
+src 폴더 = intdex.template.html파일--> app.vue를 로드함
+app.vue = <router-view/> 가 레이아웃 파일을 로드함
+
+layouts 폴더에 MainLayout.vue --> q-page-container에 <router-view/> 는 페이지 파일 로드함
+pages 폴더에 index.vue 가 현재 보이는 페이지
+
+public 폴더 = 이미지사진들, css 등 포함된 폴더 , root에서 접근 가능
+ex) public 폴더에있는 favicon.ico는 /favicon.ico로 접근 가능
+
+src 폴더에 assets 폴더에도 이미지 가능 얘네들은 webpack가 처리함
+
+boot 폴더 = boot file놔둠 boot file 은 애플리케이션이 실행되기전에 package나 플러그인 초기화
+
+componenets 폴더 = vue 컴포넌트 놓는곳
+
+css 폴더 = 전역 css파일 놓는곳
+여기에 quasar.variables.sass 라는 파일이 테마 변경 도와준다
+
+router 폴더 = 라우팅 설정하는 곳

@@ -22,3 +22,8 @@ css 폴더 = 전역 css파일 놓는곳
 여기에 quasar.variables.sass 라는 파일이 테마 변경 도와준다
 
 router 폴더 = 라우팅 설정하는 곳
+
+Layout Builder 사용해보자
+
+Quasar 페이지 가서 Layout and Grid -> Layout Builder -> 필요한 옵션만큼 체크해서 생성
+그럼 Layout 파일이 나옴 -> 복붙

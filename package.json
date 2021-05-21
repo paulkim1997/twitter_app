@@ -2,7 +2,7 @@
   "name": "qwitter",
   "version": "0.0.1",
   "description": "Firebase 학습용 트위터 앱 만들기",
-  "productName": "Qwutter",
+  "productName": "Qwitter",
   "author": "Paul Kim",
   "private": true,
   "scripts": {

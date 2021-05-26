@@ -33,8 +33,11 @@
       size="10px"
       color="grey-2"/>
 
-     <q-list>
-      <q-item class="q-py-md">
+     <q-list separator>
+      <q-item
+        v-for="qweet in qweets"
+        :key="qweet.date"
+        class="q-py-md">
         <q-item-section avatar top>
           <q-avatar>
             <img src="https://cdn.quasar.dev/img/avatar2.jpg">
@@ -49,11 +52,7 @@
             </span>
           </q-item-label>
           <q-item-label class="qweet-content text-body1">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            
-            Praesentium quas cumque qui odio ex molestiae modi iusto,
-            necessitatibus expedita vero eum quaerat rerum perspiciatis
-            assumenda dicta ab et ducimus voluptas!
+            {{qweet.content}}
           </q-item-label>
           <div class="qweet-icons row justify-between q-mt-sm">
             <q-btn
@@ -88,7 +87,7 @@
         </q-item-section>
 
         <q-item-section side top>
-          1 min ago
+          {{qweet.date | relativeDate}}
         </q-item-section>
       </q-item>
     </q-list>
@@ -97,11 +96,31 @@
 </template>
 
 <script>
+import { formatDistance} from 'date-fns'
 export default {
   name: 'PageHome',
   data() {
     return {
-      newQweetContent: ''
+      newQweetContent: '',
+      qweets: [
+        {
+          content: 'Lorem ipsum',
+          date: 1622002603503
+        }, 
+        {
+          content: 'Lorem ipsum',
+          date: 1622002603504
+        },
+        {
+          content: 'Lorem ipsum',
+          date: 1622002603505
+        }
+      ]
+    }
+  },
+  filters: {
+    relativeDate(value) {
+      return formatDistance(value, new Date())
     }
   }
 }

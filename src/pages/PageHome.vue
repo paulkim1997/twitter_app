@@ -127,6 +127,7 @@ export default {
         date: Date.now()
       }
       this.qweets.unshift(newQweet)
+      this.newQweetContent = ''
     },
     deleteQweet(qweet) {
       let dateToDelete = qweet.date

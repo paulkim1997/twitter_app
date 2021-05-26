@@ -35,63 +35,68 @@
       color="grey-2"/>
 
      <q-list separator>
-      <q-item
-        v-for="qweet in qweets"
-        :key="qweet.date"
-        class="q-py-md">
-        <q-item-section avatar top>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/img/avatar2.jpg">
-          </q-avatar>
-        </q-item-section>
+       <transition-group
+        appear
+        enter-active-class="animated fadeIn slow"
+        leave-active-class="animated fadeOut slow">
+        <q-item
+          v-for="qweet in qweets"
+          :key="qweet.date"
+          class="qweet q-py-md">
+          <q-item-section avatar top>
+            <q-avatar>
+              <img src="https://cdn.quasar.dev/img/avatar2.jpg">
+            </q-avatar>
+          </q-item-section>
 
-        <q-item-section>
-          <q-item-label class="text-subtitle1">
-            <strong>Paul Kim</strong>
-            <span class="text-grey-7">
-              @paulkim1997
-            </span>
-          </q-item-label>
-          <q-item-label class="qweet-content text-body1">
-            {{qweet.content}}
-          </q-item-label>
-          <div class="qweet-icons row justify-between q-mt-sm">
-            <q-btn
-              flat
-              round
-              color="grey"
-              icon="far fa-comment"
-              size="sm"
-            />
-            <q-btn
-              flat
-              round
-              color="grey"
-              icon="fas fa-retweet"
-              size="sm"
-            />
-            <q-btn
-              flat
-              round
-              color="grey"
-              icon="far fa-heart"
-              size="sm"
-            />
-            <q-btn
-              @click="deleteQweet(qweet)"
-              flat
-              round
-              color="grey"
-              icon="fas fa-trash"
-              size="sm"
-            />
-          </div>
-        </q-item-section>
+          <q-item-section>
+            <q-item-label class="text-subtitle1">
+              <strong>Paul Kim</strong>
+              <span class="text-grey-7">
+                @paulkim1997
+              </span>
+            </q-item-label>
+            <q-item-label class="qweet-content text-body1">
+              {{qweet.content}}
+            </q-item-label>
+            <div class="qweet-icons row justify-between q-mt-sm">
+              <q-btn
+                flat
+                round
+                color="grey"
+                icon="far fa-comment"
+                size="sm"
+              />
+              <q-btn
+                flat
+                round
+                color="grey"
+                icon="fas fa-retweet"
+                size="sm"
+              />
+              <q-btn
+                flat
+                round
+                color="grey"
+                icon="far fa-heart"
+                size="sm"
+              />
+              <q-btn
+                @click="deleteQweet(qweet)"
+                flat
+                round
+                color="grey"
+                icon="fas fa-trash"
+                size="sm"
+              />
+            </div>
+          </q-item-section>
 
-        <q-item-section side top>
-          {{qweet.date | relativeDate}}
-        </q-item-section>
-      </q-item>
+          <q-item-section side top>
+            {{qweet.date | relativeDate}}
+          </q-item-section>
+        </q-item>
+       </transition-group>
     </q-list>
 
   </q-page>
@@ -159,4 +164,7 @@ export default {
 
 .qweet-icons
   margin-left: -5px
+
+.qweet:not(:first-child)
+  border-top: 1px solid rgba(0, 0, 0, 0.12)
 </style>

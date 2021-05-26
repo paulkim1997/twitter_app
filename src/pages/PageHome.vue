@@ -19,13 +19,14 @@
       </div>
       <div class="col col-shrink">
         <q-btn
-            :disable="!newQweetContent"
-            class="q-mb-lg"
-            unelevated
-            rounded
-            no-caps
-            color="primary"
-            label="Qweet" />
+          @click="addNewQweets"
+          :disable="!newQweetContent"
+          class="q-mb-lg"
+          unelevated
+          rounded
+          no-caps
+          color="primary"
+          label="Qweet" />
       </div>
     </div>
     <q-separator
@@ -116,6 +117,15 @@ export default {
           date: 1622002603505
         }
       ]
+    }
+  },
+  methods: {
+    addNewQweets() {
+      let newQweet = {
+        content: this.newQweetContent,
+        date: Date.now()
+      }
+      this.qweets.unshift(newQweet)
     }
   },
   filters: {

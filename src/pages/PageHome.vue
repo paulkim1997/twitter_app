@@ -78,6 +78,7 @@
               size="sm"
             />
             <q-btn
+              @click="deleteQweet(qweet)"
               flat
               round
               color="grey"
@@ -126,6 +127,11 @@ export default {
         date: Date.now()
       }
       this.qweets.unshift(newQweet)
+    },
+    deleteQweet(qweet) {
+      let dateToDelete = qweet.date
+      let index = this.qweets.findIndex(qweet => qweet.date === dateToDelete)
+      this.qweets.splice(index, 1)
     }
   },
   filters: {

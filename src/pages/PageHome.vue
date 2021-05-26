@@ -101,26 +101,14 @@
 </template>
 
 <script>
+import db from 'src/boot/firebase'
 import { formatDistance} from 'date-fns'
 export default {
   name: 'PageHome',
   data() {
     return {
       newQweetContent: '',
-      qweets: [
-        {
-          content: 'Lorem ipsum',
-          date: 1622002603503
-        }, 
-        {
-          content: 'Lorem ipsum',
-          date: 1622002603504
-        },
-        {
-          content: 'Lorem ipsum',
-          date: 1622002603505
-        }
-      ]
+      qweets: []
     }
   },
   methods: {
@@ -142,6 +130,23 @@ export default {
     relativeDate(value) {
       return formatDistance(value, new Date())
     }
+  },
+  mounted() {
+    db.collection('qweets').orderBy('date').onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          let qweetChange = change.doc.data()
+            if (change.type === 'added') {
+                console.log('New qweet: ', qweetChange)
+                this.qweets.unshift(qweetChange)
+            }
+            if (change.type === 'modified') {
+                console.log('Modified qweet: ', qweetChange)
+            }
+            if (change.type === 'removed') {
+                console.log('Removed qweet: ', qweetChange)
+            }
+        })
+    })
   }
 }
 </script>
